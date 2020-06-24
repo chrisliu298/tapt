@@ -4,7 +4,7 @@ This repository is created for CSE115A (summer 2020) group project.
 
 
 
-# AugText: Text Augmentation with Pre-trained Transformers
+## AugText: Text Augmentation with Pre-trained Transformers
 
 The more data we have, and the large the model is, the better our performance. For many of today's natural language processing (NLP) downstream tasks (e.g., text classification, question answering, etc.), the dataset plays an essential role in whether the model is successful, and one of the qualities of the dataset is its size. While annotating the dataset is luxury, data augmentation becomes the key here. Unlike image data augmentation, which we can achieve easily with different transformation techniques or color inversion, it is hard to augment text because of one of the nature of human languages -- high complexity.
 

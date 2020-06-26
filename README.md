@@ -1,10 +1,13 @@
 # CSE115A Introduction to Software Engineering Group Project
 
-This repository is created for CSE115A (summer 2020) group project.
+This repository is for CSE115A (summer 2020) group project.
+
+[Initial presentation slides link](https://docs.google.com/presentation/d/1db1pVHyLvHRHqmT50MzUQGD9WSmV5X51vY9Aw_k7BDE/edit?usp=sharing)
 
 
 
-## AugText: Text Augmentation with Pre-trained Transformers
+
+## TAPT: Text Augmentation Using Pre-Trained Transformers
 
 The more data we have, and the large the model is, the better our performance. For many of today's natural language processing (NLP) downstream tasks (e.g., text classification, question answering, etc.), the dataset plays an essential role in whether the model is successful, and one of the qualities of the dataset is its size. While annotating the dataset is luxury, data augmentation becomes the key here. Unlike image data augmentation, which we can achieve easily with different transformation techniques or color inversion, it is hard to augment text because of one of the nature of human languages -- high complexity.
 
@@ -13,6 +16,7 @@ In this project, we will build a text data augmentation pipeline based on Transf
 Besides conditional generation, we will also incorporate proximal policy optimization (PPO) (Schulman et al., 2017), a policy gradient method for reinforcement learning. PPO allows us to control the generation of GPT-2. For example, in the case of sentiment analysis, GPT-2 can generate a positive movie review conditioned on a positive label. Specifically, we will use BERT (Devlin et al., 2018) as a supervisor during the fine-tuning of GPT-2, which evaluates GPT-2's generation and rewards it if a generated sentence is "very" positive (or vice versa).
 
 This project is inspired by Ziegler et al. (2019) and Kumar et al. (2020).
+
 
 
 ### References

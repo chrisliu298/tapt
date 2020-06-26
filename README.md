@@ -2,13 +2,6 @@
 
 This repository is for CSE115A (summer 2020) group project.
 
-## Presentations
-
-[Initial presentation slides link](https://docs.google.com/presentation/d/1db1pVHyLvHRHqmT50MzUQGD9WSmV5X51vY9Aw_k7BDE/edit?usp=sharing)
-
-[Final presentation slides link]()
-
-
 
 ## TAPT: Text Augmentation Using Pre-Trained Transformers
 
@@ -20,6 +13,12 @@ Besides conditional generation, we will also incorporate proximal policy optimiz
 
 This project is inspired by Ziegler et al. (2019) and Kumar et al. (2020).
 
+
+## Presentations
+
+[Initial presentation slides link](https://docs.google.com/presentation/d/1db1pVHyLvHRHqmT50MzUQGD9WSmV5X51vY9Aw_k7BDE/edit?usp=sharing)
+
+[Final presentation slides link]()
 
 
 ### References

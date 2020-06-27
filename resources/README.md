@@ -1,6 +1,6 @@
 # Project Resources
 
-This directory contains all the resources for this project. Specifically, it contains
+This directory contains all the learning resources for this project.
 
 ## GPT-2
 

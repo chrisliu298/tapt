@@ -9,8 +9,6 @@ import pandas as pd
 from random import choices
 import matplotlib.pyplot as plt
 
-tqdm.pandas()
-
 from transformers import GPT2Tokenizer
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
@@ -19,6 +17,9 @@ from trl.ppo import PPOTrainer
 from trl.core import build_bert_batch_from_txt
 
 
+tqdm.pandas()
+
+# Global training configuration
 config = {
     "lm_name": "lvwerra/gpt2-imdb",
     "ref_lm_name": "lvwerra/gpt2-imdb",
@@ -45,42 +46,6 @@ config = {
 np.random.seed(config["seed"])
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# wandb.login()
-# wandb.init(name='long-response', project='gpt2-ctrl', config=config)
-
-
-df = pd.read_csv("nlp_imdb_train.tsv", delimiter="\t")
-df["text"] = df["text"].apply(lambda x: x[:1000])
-
-bert_model = AutoModelForSequenceClassification.from_pretrained(
-    config["cls_model_name"]
-)
-bert_tokenizer = AutoTokenizer.from_pretrained(config["cls_model_name"])
-
-gpt2_model = GPT2HeadWithValueModel.from_pretrained(config["lm_name"])
-gpt2_model_ref = GPT2HeadWithValueModel.from_pretrained(config["ref_lm_name"])
-gpt2_tokenizer = GPT2Tokenizer.from_pretrained(config["tk_name"])
-
-_ = gpt2_model.to(device)
-_ = bert_model.to(device)
-_ = gpt2_model_ref.to(device)
-
-# wandb.watch(gpt2_model, log="all")
-
-
-df["tokens"] = df["text"].progress_apply(
-    lambda x: gpt2_tokenizer.encode(" " + x, return_tensors="pt").to(device)[
-        0, : config["txt_in_len"]
-    ]
-)
-df["query"] = df["tokens"].progress_apply(lambda x: gpt2_tokenizer.decode(x))
-
-ctrl_str = ["[negative]", "[neutral]", "[positive]"]
-ctrl_tokens = dict(
-    (s, gpt2_tokenizer.encode(s, return_tensors="pt").squeeze().to(device))
-    for s in ctrl_str
-)
-
 
 def pos_logit_to_reward(logit, task):
     """
@@ -99,6 +64,55 @@ def pos_logit_to_reward(logit, task):
         else:
             raise ValueError("task has to be in [0, 1, 2]!")
     return logit
+
+
+def load_models():
+    """
+    Load the fine-tuned GPT-2 model, the pre-trained GPT-2 model,
+    and the BERT model.
+    """
+    gpt2_model = GPT2HeadWithValueModel.from_pretrained(config["lm_name"])
+    gpt2_model_ref = GPT2HeadWithValueModel.from_pretrained(config["ref_lm_name"])
+    bert_model = AutoModelForSequenceClassification.from_pretrained(config["cls_model_name"])
+    return bert_model, gpt2_model, gpt2_model_ref
+
+
+def load_tokenizers():
+    """
+    Load the GPT-2 and BERT tokenizers.
+    """
+    bert_tokenizer = AutoTokenizer.from_pretrained(config["cls_model_name"])
+    gpt2_tokenizer = GPT2Tokenizer.from_pretrained(config["tk_name"])
+    return (gpt2_tokenizer, bert_tokenizer)
+
+
+# wandb.login()
+# wandb.init(name='long-response', project='gpt2-ctrl', config=config)
+
+df = pd.read_csv("nlp_imdb_train.tsv", delimiter="\t")
+df["text"] = df["text"].apply(lambda x: x[:1000])
+
+bert_tokenizer, gpt2_tokenizer = load_tokenizers()
+bert_model, gpt2_model, gpt2_model_ref = load_models()
+
+_ = gpt2_model.to(device)
+_ = bert_model.to(device)
+_ = gpt2_model_ref.to(device)
+
+# wandb.watch(gpt2_model, log="all")
+
+df["tokens"] = df["text"].progress_apply(
+    lambda x: gpt2_tokenizer.encode(" " + x, return_tensors="pt").to(device)[
+        0, : config["txt_in_len"]
+    ]
+)
+df["query"] = df["tokens"].progress_apply(lambda x: gpt2_tokenizer.decode(x))
+
+ctrl_str = ["[negative]", "[neutral]", "[positive]"]
+ctrl_tokens = dict(
+    (s, gpt2_tokenizer.encode(s, return_tensors="pt").squeeze().to(device))
+    for s in ctrl_str
+)
 
 
 ppo_trainer = PPOTrainer(gpt2_model, gpt2_model_ref, **config)
@@ -185,6 +199,11 @@ for _ in tqdm(range(int(np.ceil(config["steps"] / config["batch_size"])))):
     # wandb.log(logs)
 
 
+
+if __name__ == "__main__":
+
+
 # os.makedirs('gpt2-imdb-ctrl')
 # gpt2_model.save_pretrained('gpt2-imdb-ctrl')
 # gpt2_tokenizer.save_pretrained('gpt2-imdb-ctrl')
+

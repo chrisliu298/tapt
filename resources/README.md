@@ -22,3 +22,8 @@ This directory contains all the resources for this project. Specifically, it con
 [NLP for Developers: BERT | Rasa](https://youtu.be/zMxvS7hD-Ug)
 
 [BERT Explained!](https://youtu.be/OR0wfP2FD3c)
+
+
+## General
+
+[Data Augmentation using Pre-trained Transformer Models](https://arxiv.org/abs/2003.02245v1)

@@ -16,6 +16,16 @@ Besides conditional generation, we will also incorporate proximal policy optimiz
 This project is inspired by Ziegler et al. (2019) and Kumar et al. (2020).
 
 
+## Steps
+
+1. Collect (multiple) supervised text classification datasets (e.g., IMDb)
+
+2. Fine-tune a GPT-2 (small) using the dataset so that it can generate a continuation given a prompt
+
+3. Fine-tune a BERT-like (BERT or RoBERTa) model (large) using the dataset so that it can predict the class/label given a sentence
+
+
+
 ## Presentations
 
 [Initial presentation slides link](https://docs.google.com/presentation/d/1db1pVHyLvHRHqmT50MzUQGD9WSmV5X51vY9Aw_k7BDE/edit?usp=sharing)

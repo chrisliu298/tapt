@@ -18,11 +18,15 @@ This project is inspired by Ziegler et al. (2019) and Kumar et al. (2020).
 
 ## Steps
 
-1. Collect (multiple) supervised text classification datasets (e.g., IMDb)
+1. Collect (multiple if possible) supervised text classification datasets (e.g., IMDb)
 
 2. Fine-tune a GPT-2 (small) using the dataset so that it can generate a continuation given a prompt
 
 3. Fine-tune a BERT-like (BERT or RoBERTa) model (large) using the dataset so that it can predict the class/label given a sentence
+
+4. Fine-tune the GPT-2 (fine-tuning, with value head) using PPO training
+
+5. Build the augmentation pipeline
 
 
 

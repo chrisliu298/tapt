@@ -16,19 +16,6 @@ Besides conditional generation, we will also incorporate proximal policy optimiz
 This project is inspired by Ziegler et al. (2019) and Kumar et al. (2020).
 
 
-## Steps
-
-1. Collect (multiple if possible) supervised text classification datasets (e.g., IMDb)
-
-2. Fine-tune a GPT-2 (small) using the dataset so that it can generate a continuation given a prompt
-
-3. Fine-tune a BERT-like (BERT or RoBERTa) model (large) using the dataset so that it can predict the class/label given a sentence
-
-4. Fine-tune the GPT-2 (fine-tuning, with value head) using PPO training
-
-5. Build the augmentation pipeline
-
-
 
 ## Presentations
 
@@ -39,17 +26,19 @@ This project is inspired by Ziegler et al. (2019) and Kumar et al. (2020).
 
 ### References
 
-Devlin, Jacob, et al. "Bert: Pre-training of deep bidirectional transformers for language understanding." *arXiv preprint arXiv:1810.04805* (2018).
+Brown, Tom B., et al. "Language models are few-shot learners." arXiv preprint arXiv:2005.14165 (2020).
 
-Kumar, Varun, Ashutosh Choudhary, and Eunah Cho. "Data augmentation using pre-trained transformer models." *arXiv preprint arXiv:2003.02245* (2020).
+Devlin, Jacob, et al. "Bert: Pre-training of deep bidirectional transformers for language understanding." arXiv preprint arXiv:1810.04805 (2018).
 
-Radford, Alec, et al. "Language models are unsupervised multitask learners." *OpenAI Blog* 1.8 (2019): 9.
+Kumar, Varun, Ashutosh Choudhary, and Eunah Cho. "Data augmentation using pre-trained transformer models." arXiv preprint arXiv:2003.02245 (2020).
 
-Schulman, John, et al. "Proximal policy optimization algorithms." *arXiv preprint arXiv:1707.06347* (2017).
+Radford, Alec, et al. "Language models are unsupervised multitask learners." OpenAI Blog 1.8 (2019): 9.
 
-Vaswani, Ashish, et al. "Attention is all you need." *Advances in neural information processing systems*. 2017.
+Schulman, John, et al. "Proximal policy optimization algorithms." arXiv preprint arXiv:1707.06347 (2017).
 
-Ziegler, Daniel M., et al. "Fine-tuning language models from human preferences." *arXiv preprint arXiv:1909.08593* (2019).
+Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems. 2017.
+
+Ziegler, Daniel M., et al. "Fine-tuning language models from human preferences." arXiv preprint arXiv:1909.08593 (2019).
 
 
 

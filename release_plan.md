@@ -1,9 +1,14 @@
 # Release Plan
 Product name: TAPT
+
 Team name: TFRL (Transformers with Reward Learning)
+
 Release name: v0.1
+
 Release date: n/a
+
 Revision number: 1
+
 Revision date: 6/28/20
 
 ## High-Level Goals
@@ -44,13 +49,6 @@ Revision date: 6/28/20
 
 ### Sprint 2
 
-- (2) As a user, I want a data loader so that it can handle the data batch to my models.
-- (2) As a user, I want a model configurator so that I can configure all hyperparameters of the model.
-- (2) As a user, I want a single-line model loader with the default hyperparameter setting so that I don’t need to worry about the configuration.
-- (6) As a researcher, I want to fine-tuning GPT-2 using PPO training so that I can do controlled text generation.
-- (1) As a user, I want the model to be automatically saved after training so that I can make sure I don’t lose any progress.
-- (1) Asa researcher, I want a real-time training logger so that I know what goes run during training.
-
 | User Stories                                                 | Story Points |
 | ------------------------------------------------------------ | :----------: |
 | As a user, I want a data loader so that it can handle the data batch to my models. |      2       |
@@ -63,11 +61,6 @@ Revision date: 6/28/20
 
 
 ### Sprint 3
-
-- (4) As a researcher, I want an RNN model so that I can evaluate the quality of the augmented text.
-- (4) As a researcher, I want a Transformer model so that I can evaluate the quality of the augmented text.
-- (3) As a researcher, I want a metric so that the augmented text can be compared with other types of augmentations.
-- (4) As a user, I want everything as a class (Python object) so that I can work with them without spending too much time adapting to the tool.
 
 | User Stories                                                 | Story Points |
 | ------------------------------------------------------------ | :----------: |

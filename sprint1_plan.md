@@ -57,7 +57,8 @@ For all the tasks related to datasets, everyone will be assigned one dataset. We
 | :--------: | -------------------------- | :-------: |
 |     1      | Implement BERT tokenizer   |    0.5    |
 |     2      | Write BERT training loop   |     1     |
-| **Total**  |                            |  **1.5**  |
+|     3      | Fine-tune BERT   |    3     |
+| **Total**  |                            |  **4.5**  |
 
 **User Story 4:** As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can have a customizable GPT-2 text generator of text in any genre.
 
@@ -65,8 +66,9 @@ For all the tasks related to datasets, everyone will be assigned one dataset. We
 | :--------: | ------------------------------------------------------------ | :-------: |
 |     1      | Implement GPT-2 tokenizer                                    |    0.5    |
 |     2      | Use HuggingFace Trainer (instead of writing the training loop) |     2     |
-|     3      | Fine-tune GPT-2                                              |     3     |
-| **Total**  |                                                              |  **5.5**  |
+|     3      | Prepare GPT-2 training data                                              |     1     |
+|     4      | Fine-tune GPT-2                                              |     3     |
+| **Total**  |                                                              |  **6.5**  |
 
 **User Story 5:** As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can use it for a weak-signal controlled generation task.
 

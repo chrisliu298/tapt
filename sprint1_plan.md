@@ -62,10 +62,6 @@ For all the tasks related to datasets, everyone will be assigned one dataset. We
 
 **User Story 4:** As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can have a customizable GPT-2 text generator of text in any genre.
 
-Task 1: Implement GPT-2 tokenizer.
-Task 2: Use HuggingFace Trainer (instead of writing the training loop).
-Task 3: Fine-tune GPT-2.
-
 | Task Index | Task                                                         | Task Time |
 | :--------: | ------------------------------------------------------------ | :-------: |
 |     1      | Implement GPT-2 tokenizer                                    |    0.5    |
@@ -82,15 +78,12 @@ Task 3: Fine-tune GPT-2.
 |     3      | Fine-tune GPT-2 with weak label signal                       |     4     |
 | **Total**  |                                                              |  **6.5**  |
 
-
 **User Story 6:** As a researcher, I want to use a fine-tuned BERT-like model so that I can use it as a supervisor of my GPT-2 generator during PPO training.
 
-Task 1: Write BERT model loader so that we can load it as a text classifier.
-
-| Task Index | Task                      | Task Time |
-| :--------: | ------------------------- | :-------: |
-|     1      | Implement GPT-2 tokenizer |    0.5    |
-| **Total**  |                           |  **0.5**  |
+| Task Index | Task                                                         | Task Time |
+| :--------: | ------------------------------------------------------------ | :-------: |
+|     1      | Write BERT model loader so that we can load it as a text classifier. |    0.5    |
+| **Total**  |                                                              |  **0.5**  |
 
 **User Story 7:** As a researcher, I want to build a text classification pipeline so that I can use it to evaluate test accuracy.
 

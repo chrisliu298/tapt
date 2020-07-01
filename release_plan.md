@@ -39,7 +39,7 @@ Revision date: 6/28/20
 | As a user, I want a pipeline to preprocess .txt files so that I can have the data in the correct format to feed into the tokenizer. |      1       |
 | As a user, I want a pipeline to preprocess tabular data so that I can have the data in the correct format to feed into the tokenizer. |      1       |
 | As a researcher, I want to perform the text classification task using BERT-like models so that I can train a state-of-the-art text classifier. |      5       |
-| As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can have a customizable GPT-2 text generate of text in any genre. |      5       |
+| As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can have a customizable GPT-2 text generator of text in any genre. |      5       |
 | As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can use it for a weak-signal controlled generation task. |      5       |
 | As a researcher, I want to use a fine-tuned BERT-like model so that I can use it as a supervisor of my GPT-2 generator during PPO training. |      3       |
 | As a researcher, I want to build a text classification pipeline so that I can use it to evaluate test accuracy. |      2       |

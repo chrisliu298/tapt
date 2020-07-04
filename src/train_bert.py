@@ -50,6 +50,7 @@ def main():
     train_indices, val_indices = train_test_split(
         range(len(imdb_train)), test_size=0.2, train_size=0.8
     )
+    # Split train and validation data
     train_dataset = imdb_train.select(indices=train_indices)
     val_dataset = imdb_train.select(indices=val_indices)
     test_dataset = imdb_test

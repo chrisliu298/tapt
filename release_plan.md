@@ -27,15 +27,13 @@ Revision date: 7/5/20
 
 ### Sprint 1
 
-| User Stories                                                 | Story Points |
-| ------------------------------------------------------------ | :----------: |
-| As a researcher, I want a pipeline to load and preprocess the text dataset (IMDb) |      2       |
-| As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can use it for weak-signal controlled generation task. |      3       |
-| As a researcher, I want to use a fine-tuned BERT-like model so that I can use it as a supervisor of my GPT-2 generator during PPO training. |      3       |
-| As a researcher, I want to tune the hyperparameters of the BERT model so that I can have the best performing model. |      6       |
-| As a researcher, I want to tune the hyperparameters of the GPT-2 model so that I can have the best performing model. |      6       |
-| As a researcher, I want to build a text classification pipeline so that I can use it to predict the label of a sentence. |      2       |
-| As a researcher, I want to build a text generation pipeline so that I can measure generation quality. |      2       |
+| Story Index | User Stories                                                 | Story Points |
+| :-: | ------------------------------------------------------------ | :----------: |
+| 1 | As a researcher, I want a pipeline to load and preprocess the text dataset (IMDb). |      1       |
+| 2 | As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can use it for weak-signal controlled generation task. |      3       |
+| 3 | As a researcher, I want to use a fine-tuned BERT-like model so that I can use it as a supervisor of my GPT-2 generator during PPO training. |      3       |
+| 4 | As a researcher, I want to build a text classification pipeline so that I can use it to predict the label of a sentence. |      8       |
+| 5 | As a researcher, I want to build a text generation pipeline so that I can measure generation quality. |      8       |
 
 ### Sprint 2
 

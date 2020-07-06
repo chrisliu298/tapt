@@ -92,8 +92,11 @@ Tianyao Zheng: Developer, team member
 ## Initial Task Assignment
 
 Chris Liu: user story 3, task 1
+
 Yiyun Zheng: user story 2, task 1
+
 Jinfan Zhang: user story 1, task 1
+
 Tianyao Zheng: user story 1, task 1
 
 ## Initial Scrum Board

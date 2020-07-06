@@ -37,8 +37,6 @@ Revision date: 7/5/20
 | As a researcher, I want to build a text classification pipeline so that I can use it to predict the label of a sentence. |      2       |
 | As a researcher, I want to build a text generation pipeline so that I can measure generation quality. |      2       |
 
-
-
 ### Sprint 2
 
 | User Stories                                                 | Story Points |
@@ -46,8 +44,6 @@ Revision date: 7/5/20
 | As a researcher, I want to set up the training loop of GPT-2 using PPO training so that I can fine-tune it with reward learning. |      6       |
 | As a researcher, I want to come up with multiple sets of possible hyperparameters so that I can test which set works the best. |      2       |
 | As a researcher, I want to repeat the experiment using the other dataset (Yelp polarity) so that I can see if I can get similar results. |      8       |
-
-
 
 ### Sprint 3
 

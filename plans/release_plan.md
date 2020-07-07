@@ -3,13 +3,13 @@ Product name: TAPT
 
 Team name: TFRL
 
-Release name: v0.2
+Release name: v0.3
 
 Release date: n/a
 
-Revision number: 2
+Revision number: 3
 
-Revision date: 7/5/20
+Revision date: 7/7/20
 
 ## High-Level Goals
 
@@ -37,20 +37,23 @@ Revision date: 7/5/20
 
 ### Sprint 2
 
-| User Stories                                                 | Story Points |
-| ------------------------------------------------------------ | :----------: |
-| As a researcher, I want to set up the training loop of GPT-2 using PPO training so that I can fine-tune it with reward learning. |      6       |
-| As a researcher, I want to come up with multiple sets of possible hyperparameters so that I can test which set works the best. |      2       |
-| As a researcher, I want to repeat the experiment using the other dataset (Yelp polarity) so that I can see if I can get similar results. |      8       |
+| Story Index | User Stories                                                 | Story Points |
+| :-: | ------------------------------------------------------------ | :----------: |
+| 1 | As a researcher, I want to set up the training loop of GPT-2 with PPO training so that it can do controlled generation (IMDb) |      5       |
+| 2 | As a researcher, I want to come up with multiple sets of possible hyperparameters so that I can test which set works the best (IMDb) |      2       |
+| 3 | As a researcher, I want to fine-tune the GPT-2 model using PPO training so that it can serve as the core data augmentation model (IMDb) |      8       |
+| 4 | As a researcher, I want to perform the language modeling task using the GPT-2 model so that I can use it for weak-signal controlled generation task (Yelp polarity) |      3       |
+| 5 | As a researcher, I want to use a fine-tuned BERT-like model so that I can use it as a supervisor of my GPT-2 generator during PPO training (Yelp polarity) |      3       |
+| 6 | As a researcher, I want to set up the training loop of GPT-2 using PPO training so that I can fine-tune it with reward learning (Yelp polarity) |      5       |
 
 ### Sprint 3
 
-| User Stories                                                 | Story Points |
-| ------------------------------------------------------------ | :----------: |
-| As a researcher, I want an RNN model so that I can evaluate the quality of the augmented text. |      4       |
-| As a researcher, I want a Transformer model so that I can evaluate the quality of the augmented text. |      4       |
-| As a researcher, I want a metric so that the augmented text can be compared with other types of augmentations. |      3       |
-| As a user, I want everything as a class (Python object) so that I can work with them without spending too much time adapting to the tool. |      4       |
+| Story Index | User Stories                                                 | Story Points |
+| :-: | ------------------------------------------------------------ | :----------: |
+| 1 | As a researcher, I want an RNN model so that I can evaluate the quality of the augmented text. |      4       |
+| 2 | As a researcher, I want a Transformer model so that I can evaluate the quality of the augmented text. |      4       |
+| 3 | As a researcher, I want a metric so that the augmented text can be compared with other types of augmentations. |      3       |
+| 4 | As a user, I want everything as a class (Python object) so that I can work with them without spending too much time adapting to the tool. |      4       |
 
 
 

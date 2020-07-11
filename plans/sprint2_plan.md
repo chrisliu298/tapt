@@ -4,9 +4,9 @@ Product name: TAPT
 
 Team name: TFRL (Transformers with Reward Learning)
 
-Revision number: 1
+Revision number: 2
 
-Revision date: 7/7/20
+Revision date: 7/10/20
 
 Sprint completion date: 7/14/20
 

@@ -68,11 +68,12 @@ Sprint completion date: 7/14/20
 | :--------: | ------------------------------------------------------------ | :-------: |
 |     1      | Fine-tune BERT model 1                                       |     2     |
 |     2      | Fine-tune BERT model 0                                       |     2     |
-|     3      | Evaluate the model on the validation set and tune hyperparameters (Modify Epochs) |     6     |
-|     4      | Evaluate the model on the validation set and tune hyperparameters (Modify Epochs) |     6     |
-|     5      | Report test set performance                                  |     1     |
-|     6      | Save model                                                   |     1     |
-| **Total**  |                                                              |  **18**   |
+|     3      | Evaluate the model on the validation set and tune hyperparameters (Modify epochs) |     6     |
+|     4      | Evaluate the model on the validation set and tune hyperparameters (Modify warm up steps) |     6     |
+|     5      | Evaluate the model on the validation set and tune hyperparameters (Modify data set size) |    12     |
+|     6      | Report test set performance                                  |     1     |
+|     7      | Save model                                                   |     1     |
+| **Total**  |                                                              |  **30**   |
 
 **User Story 6:** As a researcher, I want to set up the training loop of GPT-2 using PPO training so that I can fine-tune it with reward learning (Yelp polarity)
 

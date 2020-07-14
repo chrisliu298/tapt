@@ -41,4 +41,4 @@ We completed all the user stories in our second version of sprint 1 plan, includ
 - Total number of user stories completed: 5
 - Total number of estimated ideal work hours: 39
 - Total number of days: 7
-- ![sprint1_burnup](sprint1_burnup.png)
+- ![sprint1_burnup](image/sprint1_burnup.png)

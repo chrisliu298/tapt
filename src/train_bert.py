@@ -22,6 +22,7 @@ def compute_metrics(pred):
     precision, recall, f1, _ = precision_recall_fscore_support(
         labels, preds, average="binary"
     )
+
     acc = accuracy_score(labels, preds)
     return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
@@ -60,9 +61,7 @@ def main():
         tokenize, batched=True, batch_size=len(train_dataset)
     )
     val_dataset = val_dataset.map(tokenize, batched=True, batch_size=len(train_dataset))
-    test_dataset = test_dataset.map(
-        tokenize, batched=True, batch_size=len(train_dataset)
-    )
+    test_dataset = test_dataset.map(tokenize, batched=True, batch_size=len(train_dataset))
     train_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     val_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     test_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])

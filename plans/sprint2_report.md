@@ -8,15 +8,18 @@ Date: 7/14/20
 
 ## Actions to stop doing:
 
-- 
+- The team should stop assign ambiguous tasks, because assigning substantive and clear tasks help team members to better understand the workload and to know where to start.
+- The team should stop starting working without resolving Spike, because this decreased the efficiency and caused unable to finish tasks on time.
 
 ## Actions to start doing:
 
--  
+-  The team should write comments when refactor because we can reduce the later workload.
+-  The team get familer with Goolge python style guide because we can write clear and organized code.
 
 ## Actions to keep doing:
 
-- 
+- Our team want to keep meeting frequently to track the progress.
+- Our team want to keep evaluating the model to ensure the feasibility of the algorithm.
 
 ## Work completed/not completed:
 
@@ -31,6 +34,9 @@ We completed all the user stories in our second version of sprint 2 plan, includ
 
 ## Work completion rate:
 
-- Total number of user stories completed: 
+- Total number of user stories completed: 6
 - Total number of estimated ideal work hours: 
+  1. Coding: 6hrs
+  2. Training: 48hrs
 - Total number of days: 7
+- ![sprint2_burnup](image/sprint2_burnup.png)

@@ -7,7 +7,7 @@ import tqdm
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, AutoConfig, set_seed
 
 
-class Generate:
+class Generator:
     def __init__(
         self,
         model_type,

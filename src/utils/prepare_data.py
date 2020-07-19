@@ -16,7 +16,7 @@ class DataLoader:
 
     def tokenize(self, batch):
         """Tokenizes a single batch of text data with padding and truncation."""
-        return self.tokenizer(batch["text"], padding=True, truncation=True)
+        return self.tokenizer(batch["text"], padding=True, truncation=True, max_length=512)
 
     def prepare_data(self, dataset_name_or_path, train_size=0.8, test_size=0.2, seed=42):
         """Prepares training, validation, and test data."""

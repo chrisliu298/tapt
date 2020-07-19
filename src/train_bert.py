@@ -2,7 +2,7 @@ import os
 import random
 
 import torch
-import wandb
+# import wandb
 from nlp import load_dataset
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_recall_fscore_support
@@ -14,34 +14,33 @@ from transformers import TrainingArguments
 
 
 # Enable wandb and watch everything
-wandb.login()
-os.environ["WANDB_WATCH"] = "all"
+# wandb.login()
+# os.environ["WANDB_WATCH"] = "all"
 
 
 class BertTrainer:
+    """A trainer of BERT models.
+
+    Attributes:
+        model_name_or_path: The name or path of the bert model.
+        tokenizer_name_or_path: The name or path of the tokenizer.
+        training_args: The arguments of trainign the BERT model.
+    """
     def __init__(
         self,
         model_name_or_path,
         tokenizer_name_or_path,
-        dataset_name_or_path,
         training_args,
-        model_seed=42,
     ):
         self.model_name_or_path = model_name_or_path
         self.tokenizer_name_or_path = tokenizer_name_or_path
-        self.dataset_name_or_path = dataset_name_or_path
         self.model = AutoModelForSequenceClassification.from_pretrained(
             self.model_name_or_path
         )
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.tokenizer_name_or_path, use_fast=True
         )
-        self.model_seed = model_seed
         self.training_args = training_args
-
-    def tokenize(self, batch):
-        """Tokenizes a single batch of text data with padding and truncation."""
-        return self.tokenizer(batch["text"], padding=True, truncation=True)
 
     def compute_metrics(self, pred):
         """Computes precision, recall, and F1 score."""

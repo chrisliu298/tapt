@@ -83,8 +83,16 @@ class BertTrainer:
         acc = accuracy_score(labels, preds)
         return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
-    def train_model(self, train_dataset, val_dataset, save_model=True, save_path=None):
-        """Trains (fine-tunes) the model."""
+    def train_model(
+        self,
+        train_dataset,
+        val_dataset,
+        test_dataset,
+        eval_model=False,
+        save_model=False,
+        save_path=None,
+    ):
+        """Trains (fine-tunes) and evaluates the model."""
         trainer = Trainer(
             model=self.model,
             args=self.training_args,
@@ -92,12 +100,14 @@ class BertTrainer:
             train_dataset=train_dataset,
             eval_dataset=val_dataset,
         )
+
         trainer.train()
+
+        if eval_model:
+            train_score = trainer.evaluate(eval_dataset=train_dataset)
+            valscore = trainer.evaluate(eval_dataset=valdataset)
+            test_score = trainer.evaluate(eval_dataset=test_dataset)
+
         if save_model:
             trainer.model.save_pretrained(save_path)
             self.tokenizer.save_pretrained(save_path)
-
-    def eval_model(self):
-        pass
-
-    

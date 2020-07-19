@@ -18,15 +18,19 @@ class DataLoader:
         """Tokenizes a single batch of text data with padding and truncation."""
         return self.tokenizer(batch["text"], padding="max_length", truncation=True, max_length=512)
 
-    def prepare_data(self, dataset_name_or_path, train_size=0.8, test_size=0.2, seed=42):
+    def prepare_data(self, dataset_name_or_path, train_split=0.8, val_split=0.2, seed=42, train_size=None, test_size=None):
         """Prepares training, validation, and test data."""
-        train = load_dataset(dataset_name_or_path, split="train")
-        test = load_dataset(dataset_name_or_path, split="test")
+        if train_size and test_size:
+            train = load_dataset(dataset_name_or_path, split=f"train[:{train_size}]")
+            test = load_dataset(dataset_name_or_path, split=f"test[:{test_size}]")
+        else:
+            train = load_dataset(dataset_name_or_path, split="train")
+            test = load_dataset(dataset_name_or_path, split="test")
 
         train_indices, val_indices = train_test_split(
             range(len(train)),
-            test_size=test_size,
-            train_size=train_size,
+            test_size=val_split,
+            train_size=train_split,
             random_state=seed,
         )
 

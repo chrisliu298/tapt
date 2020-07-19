@@ -51,8 +51,6 @@ class BertTrainer:
         val_dataset,
         test_dataset,
         eval_model=False,
-        save_model=False,
-        save_path=None,
     ):
         """Trains (fine-tunes) and evaluates the model."""
         trainer = Trainer(
@@ -75,7 +73,3 @@ class BertTrainer:
             print("val_acc:", round(val_score["eval_accuracy"], 4))
             print("test_f1:", round(test_score["eval_f1"], 4))
             print("test_acc:", round(test_score["eval_accuracy"], 4))
-
-        if save_model:
-            trainer.model.save_pretrained(save_path)
-            self.tokenizer.save_pretrained(save_path)

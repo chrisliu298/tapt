@@ -1,7 +1,7 @@
 # Third party
-from transformers import pipeline
 from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
+from transformers import pipeline
 
 
 class Classifier:

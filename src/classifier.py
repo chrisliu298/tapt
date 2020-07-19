@@ -7,22 +7,13 @@ class Classifier:
     """A sentiment classifier.
 
     Attribute:
-        model_name_or_path: The name or path of a BERT model.
-        tokenizer_name_or_path: The name or path of a BERT tokenizer.
-
-        The model/tokenizer names can be found here:
-        https://huggingface.co/transformers/pretrained_models.html
+            model: The bert model object.
+            tokenizer: The tokenizer object.
     """
 
-    def __init__(self, model_name_or_path, tokenizer_name_or_path):
-        self.model_name_or_path = model_name_or_path
-        self.tokenizer_name_or_path = tokenizer_name_or_path
-        self.model = AutoModelForSequenceClassification.from_pretrained(
-            self.model_name_or_path
-        )
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.tokenizer_name_or_path, use_fast=True
-        )
+    def __init__(self, model, tokenizer):
+        self.model = model
+        self.tokenizer = tokenizer
         self.ppl = pipeline(
             "sentiment-analysis", model=self.model, tokenizer=self.tokenizer
         )

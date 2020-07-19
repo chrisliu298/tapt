@@ -2,6 +2,7 @@ import os
 import random
 
 import torch
+
 # import wandb
 from nlp import load_dataset
 from sklearn.metrics import accuracy_score
@@ -22,24 +23,16 @@ class BertTrainer:
     """A trainer of BERT models.
 
     Attributes:
-        model_name_or_path: The name or path of the bert model.
-        tokenizer_name_or_path: The name or path of the tokenizer.
+        model: The bert model object.
+        tokenizer: The tokenizer object.
         training_args: The arguments of trainign the BERT model.
     """
+
     def __init__(
-        self,
-        model_name_or_path,
-        tokenizer_name_or_path,
-        training_args,
+        self, model, tokenizer, training_args,
     ):
-        self.model_name_or_path = model_name_or_path
-        self.tokenizer_name_or_path = tokenizer_name_or_path
-        self.model = AutoModelForSequenceClassification.from_pretrained(
-            self.model_name_or_path
-        )
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.tokenizer_name_or_path, use_fast=True
-        )
+        self.model = model
+        self.tokenizer = tokenizer
         self.training_args = training_args
 
     def compute_metrics(self, pred):
@@ -76,11 +69,11 @@ class BertTrainer:
             train_score = trainer.evaluate(eval_dataset=train_dataset)
             val_score = trainer.evaluate(eval_dataset=val_dataset)
             test_score = trainer.evaluate(eval_dataset=test_dataset)
-            print("train_f1:", round(train_score["eval_f1"], 4)) 
-            print("train_acc:", round(train_score["eval_accuracy"], 4)) 
-            print("val_f1:", round(val_score["eval_f1"], 4)) 
-            print("val_acc:", round(val_score["eval_accuracy"], 4)) 
-            print("test_f1:", round(test_score["eval_f1"], 4)) 
+            print("train_f1:", round(train_score["eval_f1"], 4))
+            print("train_acc:", round(train_score["eval_accuracy"], 4))
+            print("val_f1:", round(val_score["eval_f1"], 4))
+            print("val_acc:", round(val_score["eval_accuracy"], 4))
+            print("test_f1:", round(test_score["eval_f1"], 4))
             print("test_acc:", round(test_score["eval_accuracy"], 4))
 
         if save_model:

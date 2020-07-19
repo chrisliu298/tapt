@@ -74,7 +74,7 @@ class BertTrainer:
 
         if eval_model:
             train_score = trainer.evaluate(eval_dataset=train_dataset)
-            valscore = trainer.evaluate(eval_dataset=valdataset)
+            val_score = trainer.evaluate(eval_dataset=val_dataset)
             test_score = trainer.evaluate(eval_dataset=test_dataset)
             print("train_f1:", round(train_score["eval_f1"], 4)) 
             print("train_acc:", round(train_score["eval_accuracy"], 4)) 

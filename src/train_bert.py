@@ -76,6 +76,12 @@ class BertTrainer:
             train_score = trainer.evaluate(eval_dataset=train_dataset)
             valscore = trainer.evaluate(eval_dataset=valdataset)
             test_score = trainer.evaluate(eval_dataset=test_dataset)
+            print("train_f1:", round(train_score["eval_f1"], 4)) 
+            print("train_acc:", round(train_score["eval_accuracy"], 4)) 
+            print("val_f1:", round(val_score["eval_f1"], 4)) 
+            print("val_acc:", round(val_score["eval_accuracy"], 4)) 
+            print("test_f1:", round(test_score["eval_f1"], 4)) 
+            print("test_acc:", round(test_score["eval_accuracy"], 4))
 
         if save_model:
             trainer.model.save_pretrained(save_path)

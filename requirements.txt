@@ -1,0 +1,8 @@
+numpy
+transformers
+trl
+sklearn
+nlp
+torch
+pandas
+dict2obj

@@ -11,7 +11,6 @@ tokenizer = AutoTokenizer.from_pretrained("roberta-base")
 # Load model
 model = AutoModelForSequenceClassification.from_pretrained("distilroberta-base")
 
-
 # Create data loader
 dataloader = DataLoader(tokenizer)
 # Load (original) training, validation, and test set
@@ -20,7 +19,6 @@ train_dataset, val_dataset, test_dataset = dataloader.prepare_data(
 )
 # Load data to evaluate (by training)
 imdb_augmented = dataloader.prepare_custom_data("/content/gpt2_ppo_yelp_20000.tsv")
-
 
 # Define training arguments
 training_args = TrainingArguments(

@@ -77,7 +77,7 @@ class GPT2Generator:
         seed=42,
     ):
         """Generates a sequence of words of specified length given an input prompt."""
-        self.set_seed(self.seed)
+        self.set_seed(seed)
         length = self.adjust_length_to_model(
             length, max_sequence_length=model.config.max_position_embeddings
         )

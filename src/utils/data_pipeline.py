@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 
 
 def prepare_data(
+    tokenize_func,
     dataset_name,
     train_count,
     train_size,
@@ -33,9 +34,9 @@ def prepare_data(
     val_dataset = train.select(indices=val_indices)
     test_dataset = test.select(indices=test_indices) if not use_all_test else test
     # Preprocess
-    train_dataset = train_dataset.map(tokenize, batched=True)
-    val_dataset = val_dataset.map(tokenize, batched=True)
-    test_dataset = test_dataset.map(tokenize, batched=True)
+    train_dataset = train_dataset.map(tokenize_func, batched=True)
+    val_dataset = val_dataset.map(tokenize_func, batched=True)
+    test_dataset = test_dataset.map(tokenize_func, batched=True)
     train_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     val_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     test_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
@@ -50,7 +51,7 @@ def prepare_custom_data(dataset_name, slice=None):
         stop = int(slice[1:-1].split(":")[1])
         df = df[start:stop]
     dataset = Dataset.from_pandas(df)
-    dataset = dataset.map(tokenize, batched=True)
+    dataset = dataset.map(tokenize_func, batched=True)
     dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     return dataset
 

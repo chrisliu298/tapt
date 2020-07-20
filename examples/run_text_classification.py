@@ -6,8 +6,18 @@ from transformers import TrainingArguments
 
 from utils.data_pipeline import prepare_data
 from utils.data_pipeline import prepare_custom_data
-from utils.data_pipeline import tokenize
 from utils.metrics import compute_metrics
+
+
+def tokenize(batch):
+    """Tokenize a batch of data (with padding and truncation).
+
+    Arg:
+        batch: A batch of training data.
+    """
+    return tokenizer(
+        batch["text"], padding="max_length", truncation=True, max_length=512
+    )
 
 
 # Load tokenizer

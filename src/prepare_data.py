@@ -61,9 +61,11 @@ class DataLoader:
 
         return (train_dataset, val_dataset, test_dataset)
 
-    def prepare_custom_data(self, dataset_name_or_path):
+    def prepare_custom_data(self, dataset_name_or_path, slice=None):
         """Prepares a single tsv file dataset."""
         df = pd.read_csv(dataset_name_or_path, delimiter="\t")
+        if slice:
+            df = df[:slice]
         dataset = Dataset.from_pandas(df)
         dataset = dataset.map(self.tokenize, batched=True)
         dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])

@@ -24,7 +24,6 @@ class Generator:
         self.start_token = "<|startoftext|>"
         self.sep_token = "<|sep|>"
         self.stop_token = "<|endoftext|>"
-        self.has_start_token = has_start_token
 
     def set_seed(self, seed):
         """Sets random seed for numpy and torch"""
@@ -55,15 +54,14 @@ class Generator:
         p=0.9,
         no_cuda=False,
         device=self.device,
-        seed=42,
-        has_start_token=False,
+        seed=42
     ):
         """Generates a sequence of words of specified length given an input prompt."""
         self.set_seed(self.seed)
         length = self.adjust_length_to_model(
             length, max_sequence_length=model.config.max_position_embeddings
         )
-        prompt_text = self.start_token + " " + prompt if has_start_token else prompt
+        prompt_text = self.start_token + " " + prompt
         encoded_prompt = tokenizer.encode(
             prompt_text, add_special_tokens=False, return_tensors="pt"
         )

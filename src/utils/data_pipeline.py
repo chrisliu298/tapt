@@ -54,13 +54,3 @@ def prepare_custom_data(dataset_name, slice=None):
     dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     return dataset
 
-
-def tokenize(batch):
-    """Tokenize a batch of data (with padding and truncation).
-
-    Arg:
-        batch: A batch of training data.
-    """
-    return tokenizer(
-        batch["text"], padding="max_length", truncation=True, max_length=512
-    )

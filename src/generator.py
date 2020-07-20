@@ -68,13 +68,13 @@ class GPT2Generator:
         tokenizer,
         model,
         prompt,
+        device,
         length=256,
         repetition_penalty=1.0,
         temperature=1,
         k=0,
         p=0.9,
         no_cuda=False,
-        device=self.device,
         seed=42,
     ):
         """Generates a sequence of words of specified length given an input prompt."""

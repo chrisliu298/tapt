@@ -1,5 +1,5 @@
 import pandas as pd
-from ppinrt import pprint
+from pprint import pprint
 from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
 from transformers import Trainer
@@ -10,18 +10,17 @@ from utils.data_pipeline import prepare_custom_data
 from utils.metrics import compute_metrics
 
 
-def tokenize(batch):
-    """Tokenize a batch of data (with padding and truncation).
-
-    Arg:
-        batch: A batch of training data.
-    """
-    return tokenizer(
-        batch["text"], padding="max_length", truncation=True, max_length=512
-    )
-
-
 def main():
+    def tokenize(batch):
+        """Tokenize a batch of data (with padding and truncation).
+
+        Arg:
+            batch: A batch of training data.
+        """
+        return tokenizer(
+            batch["text"], padding="max_length", truncation=True, max_length=512
+        )
+
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained("roberta-base")
     # Load model
@@ -31,18 +30,18 @@ def main():
     train_dataset, val_dataset, test_dataset = prepare_data(
         tokenize_func=tokenize,
         dataset_name="yelp_polarity",
-        train_count=10000,
-        train_size=5000,
-        val_size=5000,
+        train_count=10,
+        train_size=5,
+        val_size=5,
         use_all_test=False,
-        test_count=38000,
-        test_size=25000,
-        others=13000,
+        test_count=10,
+        test_size=5,
+        others=5,
         seed=42,
     )
     # Load custom data
     augmented = prepare_custom_data(
-        tokenize_func=tokenize, dataset_name="/content/gpt2_ppo_yelp_5000.tsv"
+        tokenize_func=tokenize, dataset_name="/content/nlp_yelp_train.tsv"
     )
 
     # Define training arguments

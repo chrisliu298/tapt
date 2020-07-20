@@ -65,7 +65,9 @@ class DataLoader:
         """Prepares a single tsv file dataset."""
         df = pd.read_csv(dataset_name_or_path, delimiter="\t")
         if slice:
-            df = df[:slice]
+            start = int(slice[1:-1].split(":")[0])
+            stop = int(slice[1:-1].split(":")[1])
+            df = df[start:stop]
         dataset = Dataset.from_pandas(df)
         dataset = dataset.map(self.tokenize, batched=True)
         dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])

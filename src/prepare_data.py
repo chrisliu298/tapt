@@ -63,7 +63,7 @@ class DataLoader:
 
     def prepare_custom_data(self, dataset_name_or_path, slice=None):
         """Prepares a single tsv file dataset."""
-        df = pd.read_csv(dataset_name_or_path, delimiter="\t")
+        df = pd.read_csv(dataset_name_or_path, delimiter="\t").sample(frac=1)
         if slice:
             start = int(slice[1:-1].split(":")[0])
             stop = int(slice[1:-1].split(":")[1])

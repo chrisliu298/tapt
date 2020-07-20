@@ -18,7 +18,7 @@ train_dataset, val_dataset, test_dataset = dataloader.prepare_data(
     "yelp_polarity", train_size=25000, test_size=25000
 )
 # Load data to evaluate (by training)
-imdb_augmented = dataloader.prepare_custom_data("/content/gpt2_ppo_yelp_20000.tsv")
+augmented = dataloader.prepare_custom_data("/content/gpt2_ppo_yelp_20000.tsv")
 
 # Define training arguments
 training_args = TrainingArguments(
@@ -42,4 +42,4 @@ training_args = TrainingArguments(
 # Define BERT trainer
 bert_trainer = BertTrainer(model=model, tokenizer=tokenizer, training_args=training_args)
 # Train BERT
-bert_trainer.train_model(imdb_augmented, val_dataset, test_dataset, eval_model=True)
+bert_trainer.train_model(augmented, val_dataset, test_dataset, eval_model=True)

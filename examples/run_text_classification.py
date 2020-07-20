@@ -36,12 +36,11 @@ train_dataset, val_dataset, test_dataset = prepare_data(
     test_count=38000,
     test_size=25000,
     others=13000,
-    seed=42
+    seed=42,
 )
 # Load custom data
 augmented = prepare_custom_data(
-    tokenize_func=tokenize,
-    dataset_name="/content/gpt2_ppo_yelp_5000.tsv"
+    tokenize_func=tokenize, dataset_name="/content/gpt2_ppo_yelp_5000.tsv"
 )
 
 # Define training arguments

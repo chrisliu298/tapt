@@ -87,9 +87,7 @@ class Generator:
         generated_sequences = []
         for generated_sequence_idx, generated_sequence in enumerate(output_sequences):
             generated_sequence = generated_sequence.tolist()
-            text = tokenizer.decode(
-                generated_sequence, clean_up_tokenization_spaces=True
-            )
+            text = tokenizer.decode(generated_sequence, clean_up_tokenization_spaces=True)
             text = text[: text.find(self.stop_token) if self.stop_token else None]
             total_sequence = (
                 prompt_text

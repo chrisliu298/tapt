@@ -46,11 +46,7 @@ class BertTrainer:
         return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
     def train_model(
-        self,
-        train_dataset,
-        val_dataset,
-        test_dataset,
-        eval_model=False,
+        self, train_dataset, val_dataset, test_dataset, eval_model=False,
     ):
         """Trains (fine-tunes) and evaluates the model."""
         trainer = Trainer(

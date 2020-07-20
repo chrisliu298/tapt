@@ -11,14 +11,25 @@ class DataLoader:
     Attributes:
         tokenizer: The tokenizer used to preprocess the dataset.
     """
+
     def __init__(self, tokenizer):
         self.tokenizer = tokenizer
 
     def tokenize(self, batch):
         """Tokenizes a single batch of text data with padding and truncation."""
-        return self.tokenizer(batch["text"], padding="max_length", truncation=True, max_length=512)
+        return self.tokenizer(
+            batch["text"], padding="max_length", truncation=True, max_length=512
+        )
 
-    def prepare_data(self, dataset_name_or_path, train_split=0.8, val_split=0.2, seed=42, train_size=None, test_size=None):
+    def prepare_data(
+        self,
+        dataset_name_or_path,
+        train_split=0.8,
+        val_split=0.2,
+        seed=42,
+        train_size=None,
+        test_size=None,
+    ):
         """Prepares training, validation, and test data."""
         if train_size and test_size:
             train = load_dataset(dataset_name_or_path, split=f"train[:{train_size}]")

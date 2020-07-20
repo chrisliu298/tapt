@@ -56,8 +56,12 @@ class DataLoader:
         train_dataset.set_format(
             "torch", columns=["input_ids", "attention_mask", "label"]
         )
-        val_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
-        test_dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
+        val_dataset.set_format(
+            "torch", columns=["input_ids", "attention_mask", "label"]
+        )
+        test_dataset.set_format(
+            "torch", columns=["input_ids", "attention_mask", "label"]
+        )
 
         return (train_dataset, val_dataset, test_dataset)
 

@@ -18,13 +18,16 @@ class GPT2PPOGenerator:
         device: A string indicating the use of GPU or CPU. 
                 torch.device("cuda" if torch.cuda.is_available() else "cpu")   
     """
+
     def __init__(self, device):
         self.device = device
 
     def generate(self, tokenizer, model, prompt, length=256, k=0, p=0.9):
         """Generates a sequence of words of specified length given an input prompt."""
         input_tokens = tokenizer.encode(prompt, return_tensors="pt").to(self.device)
-        response_tensors = respond_to_batch(model, input_tokens, txt_len=length, top_k=k, top_p=p)
+        response_tensors = respond_to_batch(
+            model, input_tokens, txt_len=length, top_k=k, top_p=p
+        )
         response_strings = tokenizer.decode(response_tensors[0, :])
         return prompt + response_strings
 
@@ -72,7 +75,7 @@ class GPT2Generator:
         p=0.9,
         no_cuda=False,
         device=self.device,
-        seed=42
+        seed=42,
     ):
         """Generates a sequence of words of specified length given an input prompt."""
         self.set_seed(self.seed)
@@ -103,7 +106,9 @@ class GPT2Generator:
         generated_sequences = []
         for generated_sequence_idx, generated_sequence in enumerate(output_sequences):
             generated_sequence = generated_sequence.tolist()
-            text = tokenizer.decode(generated_sequence, clean_up_tokenization_spaces=True)
+            text = tokenizer.decode(
+                generated_sequence, clean_up_tokenization_spaces=True
+            )
             text = text[: text.find(self.stop_token) if self.stop_token else None]
             total_sequence = (
                 prompt_text
@@ -117,5 +122,3 @@ class GPT2Generator:
             )
             generated_sequences.append(total_sequence)
         return generated_sequences
-
-

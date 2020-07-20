@@ -2,7 +2,7 @@ from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
 from transformers import TrainingArguments
 
-from train_bert import BertTrainer
+from model_trainer import BertTrainer
 from prepare_data import DataLoader
 
 

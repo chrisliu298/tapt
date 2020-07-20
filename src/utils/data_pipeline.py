@@ -2,6 +2,8 @@ import pandas as pd
 from nlp import load_dataset
 from nlp import Dataset
 from sklearn.model_selection import train_test_split
+from transformers import LineByLineTextDataset
+from transformers import TextDataset
 
 
 def prepare_data(
@@ -54,3 +56,18 @@ def prepare_custom_data(tokenize_func, dataset_name, slice=None):
     dataset = dataset.map(tokenize_func, batched=True)
     dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     return dataset
+
+
+def get_dataset(args, tokenizer, evaluate=False):
+    file_path = args.eval_data_file if evaluate else args.train_data_file
+    if args.line_by_line:
+        return LineByLineTextDataset(
+            tokenizer=tokenizer, file_path=file_path, block_size=args.block_size
+        )
+    else:
+        return TextDataset(
+            tokenizer=tokenizer,
+            file_path=file_path,
+            block_size=args.block_size,
+            overwrite_cache=args.overwrite_cache,
+        )

@@ -27,7 +27,8 @@ model = AutoModelForSequenceClassification.from_pretrained("distilroberta-base")
 
 # Load dataset
 train_dataset, val_dataset, test_dataset = prepare_data(
-    "yelp_polarity",
+    tokenize_func=tokenize,
+    dataset_name="yelp_polarity",
     train_count=10000,
     train_size=5000,
     val_size=5000,
@@ -38,7 +39,10 @@ train_dataset, val_dataset, test_dataset = prepare_data(
     seed=42
 )
 # Load custom data
-augmented = prepare_custom_data("/path/to/data")
+augmented = prepare_custom_data(
+    tokenize_func=tokenize,
+    dataset_name="/content/gpt2_ppo_yelp_5000.tsv"
+)
 
 # Define training arguments
 training_args = TrainingArguments(
@@ -51,7 +55,7 @@ training_args = TrainingArguments(
     logging_dir="/content/logs",
     max_grad_norm=1.0,
     num_train_epochs=4,
-    output_dir="/path/to",
+    output_dir="/content/drive/My Drive/models/distilroberta",
     per_device_eval_batch_size=32,
     per_device_train_batch_size=32,
     save_steps=1000,
@@ -60,6 +64,7 @@ training_args = TrainingArguments(
     weight_decay=0.0,
 )
 
+# Define trainer
 trainer = Trainer(
     model=model,
     args=training_args,
@@ -67,3 +72,15 @@ trainer = Trainer(
     train_dataset=augmented,
     eval_dataset=val_dataset,
 )
+
+# Train the model
+trainer.train()
+
+# Evaluate the model
+train_score = trainer.evaluate(eval_dataset=train_dataset)
+val_score = trainer.evaluate(eval_dataset=val_dataset)
+test_score = trainer.evaluate(eval_dataset=test_dataset)
+
+print(train_score)
+print(val_score)
+print(test_score)

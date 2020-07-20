@@ -44,7 +44,7 @@ def prepare_data(
     return (train_dataset, val_dataset, test_dataset)
 
 
-def prepare_custom_data(dataset_name, slice=None):
+def prepare_custom_data(tokenize_func, dataset_name, slice=None):
     df = pd.read_csv(dataset_name, delimiter="\t").sample(frac=1)
     if slice:
         start = int(slice[1:-1].split(":")[0])
@@ -54,4 +54,3 @@ def prepare_custom_data(dataset_name, slice=None):
     dataset = dataset.map(tokenize_func, batched=True)
     dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
     return dataset
-

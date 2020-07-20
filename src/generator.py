@@ -8,9 +8,28 @@ import tqdm
 from dict2obj import Dict2Obj
 from transformers import GPT2LMHeadModel
 from transformers import GPT2Tokenizer
+from trl.gpt2 import GPT2HeadWithValueModel, respond_to_batch
 
 
-class Generator:
+class GPT2PPOGenerator:
+    """GPT-2 PPO model generator.
+
+    Attributes:
+        device: A string indicating the use of GPU or CPU. 
+                torch.device("cuda" if torch.cuda.is_available() else "cpu")   
+    """
+    def __init__(self, device):
+        self.device = device
+
+    def generate(self, tokenizer, model, prompt, length=256, k=0, p=0.9):
+        """Generates a sequence of words of specified length given an input prompt."""
+        input_tokens = tokenizer.encode(prompt, return_tensors="pt").to(self.device)
+        response_tensors = respond_to_batch(model, input_tokens, txt_len=length, top_k=k, top_p=p)
+        response_strings = tokenizer.decode(response_tensors[0, :])
+        return prompt + response_strings
+
+
+class GPT2Generator:
     """GPT-2 model generator.
 
     Attributes:
@@ -46,7 +65,6 @@ class Generator:
         tokenizer,
         model,
         prompt,
-        num_return_sequences=1,
         length=256,
         repetition_penalty=1.0,
         temperature=1,
@@ -99,3 +117,5 @@ class Generator:
             )
             generated_sequences.append(total_sequence)
         return generated_sequences
+
+

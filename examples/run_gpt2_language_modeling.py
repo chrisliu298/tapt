@@ -31,8 +31,8 @@ def main():
 
     # Data arguments
     data_args = collections.defaultdict(
-        train_data_file="train.txt",
-        eval_data_file="val.txt",
+        train_data_file="/content/train.txt",
+        eval_data_file="/content/val.txt",
         line_by_line=False,
         mlm=False,
         mlm_probability=0.15,
@@ -42,14 +42,14 @@ def main():
 
     # Training arguments
     training_args = TrainingArguments(
-        output_dir="/content/drive/My Drive/models/gpt2_yelp",
+        output_dir="/content",
         overwrite_output_dir=True,
         do_train=True,
         do_eval=True,
         do_predict=False,
         evaluate_during_training=True,
-        per_gpu_train_batch_size=2,
-        per_gpu_eval_batch_size=2,
+        per_device_train_batch_size=2,
+        per_device_eval_batch_size=2,
         gradient_accumulation_steps=1,
         learning_rate=2e-5,
         weight_decay=0.0,
@@ -107,7 +107,9 @@ def main():
         else None
     )
     data_collator = DataCollatorForLanguageModeling(
-        tokenizer=tokenizer, mlm=data_args.mlm, mlm_probability=data_args.mlm_probability,
+        tokenizer=tokenizer,
+        mlm=data_args.mlm,
+        mlm_probability=data_args.mlm_probability,
     )
 
     # Initialize trainer
@@ -129,9 +131,15 @@ def main():
     )
 
     # Train the model
-    train_results = trainer.train(model_path=model_path)
-    trainer.save_model()
-    tokenizer.save_pretrained(training_args.output_dir)
+    # train_results = trainer.train(model_path=model_path)
+    # trainer.save_model()
+    # tokenizer.save_pretrained(training_args.output_dir)
+
+    # Evaluate the model
+    ppl = evaluate_gpt2(
+        "/content/test.txt", training_args, data_args, trainer, tokenizer
+    )
+    print(ppl)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_recall_fscore_support
 
-from utils import get_dataset
+from utils.data_pipeline import get_dataset
 
 
 def compute_metrics(pred):

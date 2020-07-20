@@ -83,9 +83,9 @@ Sprint completion date: 7/6/20
 
 Chris Liu: Researcher, product owner
 
-Yiyun Zheng: Developer, scrum master
+Jinfan Zhang: Developer, scrum master
 
-Jinfan Zhang: Developer, team member
+Yiyun Zheng: Developer, team member
 
 Tianyao Zheng: Developer, team member
 

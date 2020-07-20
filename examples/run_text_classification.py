@@ -1,4 +1,5 @@
 import pandas as pd
+from ppinrt import pprint
 from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
 from transformers import Trainer
@@ -80,6 +81,6 @@ train_score = trainer.evaluate(eval_dataset=train_dataset)
 val_score = trainer.evaluate(eval_dataset=val_dataset)
 test_score = trainer.evaluate(eval_dataset=test_dataset)
 
-print(train_score)
-print(val_score)
-print(test_score)
+pprint(train_score)
+pprint(val_score)
+pprint(test_score)

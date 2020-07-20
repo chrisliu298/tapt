@@ -68,7 +68,6 @@ class GPT2Generator:
         tokenizer,
         model,
         prompt,
-        device,
         length=256,
         repetition_penalty=1.0,
         temperature=1,

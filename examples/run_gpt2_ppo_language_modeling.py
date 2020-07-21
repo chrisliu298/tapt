@@ -1,4 +1,6 @@
 import os
+os.chdir("/tapt/src")
+
 import time
 from random import choices
 

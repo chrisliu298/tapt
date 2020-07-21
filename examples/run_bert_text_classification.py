@@ -1,3 +1,6 @@
+import os
+os.chdir("/tapt/src")
+
 import pandas as pd
 from pprint import pprint
 from transformers import AutoModelForSequenceClassification

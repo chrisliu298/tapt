@@ -46,11 +46,13 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def pos_logit_to_reward(logit, task):
-    """
-    Take the positive sentiment logit and scale it for the task.
-        task [negative]: reward = -logit
-        task [neutral]: reward = -2*abs(logit)+4
-        task [positive]: reward = logit
+    """Take the positive sentiment logit and scale it for the task.
+    
+    Args:
+        logit: The output of the model.
+        task: task [negative]: reward = -logit
+              task [neutral]: reward = -2 * abs(logit) + 4
+              task [positive]: reward = logit
     """
     for i in range(len(logit)):
         if task[i] == "[negative]":

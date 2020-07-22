@@ -82,16 +82,13 @@ In this project, we build a text data augmentation pipline based on transformer 
 
 
 
-### 2. Generator
+### 3. Generator
 
 `generator` help user to load and use GPT-2 model to generate the sentence depend on given prompt and label.
 
 #### Main method:
 
-- `nlp.list_datasets()` to list the available datasets
-- `nlp.load_dataset(dataset_name, **kwargs)` to instantiate a dataset
-- `nlp.list_metrics()` to list the available metrics
-- `nlp.load_metric(metric_name, **kwargs)` to instantiate a metric
+- 
 
 
 
@@ -99,7 +96,11 @@ In this project, we build a text data augmentation pipline based on transformer 
 
 ## Run the examples
 
+ [Example for Bert classification](src/run_bert_text_classification.py) 
 
+ [Example for GPT-2 generator](src/run_gpt2_language_modeling.py) 
+
+ [Example for PPO pipeline](src/run_gpt2_ppo_language_modeling.py) 
 
 
 ## Members

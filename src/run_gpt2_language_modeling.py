@@ -1,6 +1,7 @@
 import collections
 import math
 import os
+
 os.chdir("/tapt/src")
 
 from dict2obj import Dict2Obj

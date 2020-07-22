@@ -24,7 +24,11 @@ def compute_metrics(pred):
 def evaluate_gpt2(data, training_args, data_args, trainer, tokenizer):
     training_args.do_eval = True
     data_args.eval_data_file = data
-    eval_dataset = get_dataset(data_args, tokenizer=tokenizer, evaluate=True) if training_args.do_eval else None
+    eval_dataset = (
+        get_dataset(data_args, tokenizer=tokenizer, evaluate=True)
+        if training_args.do_eval
+        else None
+    )
     trainer.eval_dataset = eval_dataset
     eval_output = trainer.evaluate()
     eval_perplexity = math.exp(eval_output["eval_loss"])

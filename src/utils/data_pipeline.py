@@ -98,3 +98,18 @@ def get_dataset(args, tokenizer, evaluate=False):
             block_size=args.block_size,
             overwrite_cache=args.overwrite_cache,
         )
+
+def text_to_df(filename):
+    """Convert a .txt file to a .tsv file, which the data pipeline accepts.
+
+    Args:
+        filename: The file path of the .txt file.
+    """
+    text_file = open(filename, "r").read().split(" <|endoftext|>\n")
+    text_file.pop()
+    text_file = [i.split("] ") for i in text_file]
+    list_file = [[t[1], 1] if "positive" in t[0] else [t[1], 0] for t in text_file]
+    assert len(list_file) == len(text_file)
+    text = [i[0] for i in list_file]
+    label = [i[1] for i in list_file]
+    return pd.DataFrame({"text": text, "label": label})

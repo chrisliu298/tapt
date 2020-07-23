@@ -18,6 +18,20 @@ def prepare_data(
     others=13000,
     seed=42,
 ):
+    """Prepares the BERT training, validaton, and test data.
+
+    Args:
+        tokenize_func: A pre-defined tokenization function.
+        dataset_name: The dataset name (identifier) from HuggingFace NLP API.
+        train_count: The number of total training data to download.
+        train_size: The number of training data used to train the model.
+        val_size: The number of validation data used to train the model.
+        use_all_test: Whether to use all the test dataset.
+        test_count: The number of total test data to download.
+        test_size: The number of test data used to test the model.
+        others: The number of extra test data.
+        seed: The random seed which controls data selection.
+    """
     # Load train and test datasets
     train = load_dataset(dataset_name, split="train").shuffle(seed=seed)
     test = load_dataset(dataset_name, split="test").shuffle(seed=seed)
@@ -47,6 +61,13 @@ def prepare_data(
 
 
 def prepare_custom_data(tokenize_func, dataset_name, slice=None):
+    """Prepares a custom dataset in a tsv file.
+
+    Args:
+        tokenize_func: A pre-defined tokenization function.
+        dataset_name: The dataset name (identifier) from HuggingFace NLP API.
+        slice: The number of data points to use.
+    """
     df = pd.read_csv(dataset_name, delimiter="\t").sample(frac=1)
     if slice:
         start = int(slice[1:-1].split(":")[0])
@@ -59,6 +80,12 @@ def prepare_custom_data(tokenize_func, dataset_name, slice=None):
 
 
 def get_dataset(args, tokenizer, evaluate=False):
+    """Convert the text file into the GPT-2 TextDataset format.
+
+    Args:
+        tokenizer: The GPT-2 tokenizer object.
+        evaluate: Whether to evalute on the dataset.
+    """
     file_path = args.eval_data_file if evaluate else args.train_data_file
     if args.line_by_line:
         return LineByLineTextDataset(

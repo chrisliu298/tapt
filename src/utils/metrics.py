@@ -22,6 +22,14 @@ def compute_metrics(pred):
 
 
 def evaluate_gpt2(data, training_args, data_args, trainer, tokenizer):
+    """Computes the perplexity score of GPT-2.
+
+    Args:
+        data: The name of the text file (dataset).
+        training_args: The training argument object.
+        data_args: The data argument object.
+        tokenizer: The GPT-2 tokenizer object.
+    """
     training_args.do_eval = True
     data_args.eval_data_file = data
     eval_dataset = (

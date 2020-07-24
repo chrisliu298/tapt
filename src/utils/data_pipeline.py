@@ -42,7 +42,10 @@ def prepare_data(
     )
     if not use_all_test:
         _, test_indices = train_test_split(
-            range(test_count), test_size=test_size, train_size=non_test_size, random_state=seed
+            range(test_count),
+            test_size=test_size,
+            train_size=non_test_size,
+            random_state=seed,
         )
 
     # Split train and validation data
@@ -100,7 +103,7 @@ def get_dataset(args, tokenizer, evaluate=False):
         )
 
 
-def text_to_df(filename):
+def text_to_df(filename, has_sep=False):
     """Convert a .txt file to a .tsv file, which the data pipeline accepts.
 
     Args:
@@ -108,7 +111,11 @@ def text_to_df(filename):
     """
     text_file = open(filename, "r").read().split(" <|endoftext|>\n")
     text_file.pop()
-    text_file = [i.split("] ") for i in text_file]
+    text_file = (
+        [i.split("]  <|sep|> ") for i in text_file]
+        if has_sep
+        else [i.split("] ") for i in text_file]
+    )
     list_file = [[t[1], 1] if "positive" in t[0] else [t[1], 0] for t in text_file]
     assert len(list_file) == len(text_file)
     text = [i[0] for i in list_file]

@@ -12,12 +12,10 @@ Sprint completion date:
 
 ## Goal
 
-1. Be able to train GPT-2 with PPO
-2. Be able to generate sentences with higher quality by using optimized GPT-2
-3. Be able to fine-tune BERT-like text classification models with Yelp polarity
-4. Be able to fine-tune GPT-2 models with Yelp polarity
-5. Be able to classify sentiments (BERT)
-6. Be able to generate sentences similar to the training data (GPT-2)
+1. Be able to generated reviews given short prompts
+2. Be able to evaluate generated text (IMDb and Yelp) by training a model using the augmented data
+3. Be able to evaluate generated text (IMDb and Yelp) by human evaluation
+4. Be able to write clean code and comments
 
 ## Tasks List
 

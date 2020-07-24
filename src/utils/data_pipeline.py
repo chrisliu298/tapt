@@ -112,7 +112,7 @@ def text_to_df(filename, has_sep=False):
     text_file = open(filename, "r").read().split(" <|endoftext|>\n")
     text_file.pop()
     text_file = (
-        [i.split("]  <|sep|> ") for i in text_file]
+        [i.split("] <|sep|> ") for i in text_file]
         if has_sep
         else [i.split("] ") for i in text_file]
     )

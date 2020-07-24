@@ -2,7 +2,7 @@
 
 ## Features
 
-In this project, we build a text data augmentation pipline based on transformer models and provide source code to set up a proximal policy optimization (PPO) pipeline. The main concept of PPO is optimizing the GPT-2 generate model by using a Bert-like classifer model as supervisor. Therefore, our codes contain 4 parts: Data (prepross) pipline, Classifier, Generator and Metrics (evaluation). 
+In this project, we build a text data augmentation pipline based on transformer models and provide source code to set up a proximal policy optimization (PPO) pipeline. The main concept of PPO is optimizing the GPT-2 generate model by using a Bert-like classifer model as supervisor. Therefore, our codes contain 4 parts: Data (prepross) pipeline, Classifier, Generator and Metrics (evaluation). 
 
 ### 1. Data Pipline
 

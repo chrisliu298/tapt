@@ -59,13 +59,11 @@ In this project, we build a text data augmentation pipline based on transformer 
   )
   ```
 
-
-
 ### 2. Classifier
 
 `classifier` help user to load and use Bert model to classify the sentence.
 
-#### Main method and Simple Example:
+##### Main method and Simple Example:
 
 - Using the `Classifier` class to load the model and using `classify` to get the result from classifier
 
@@ -80,21 +78,102 @@ In this project, we build a text data augmentation pipline based on transformer 
   print(clf.classify("The restaurant is really good"))
   ```
 
-
-
 ### 3. Generator
 
 `generator` help user to load and use GPT-2 model to generate the sentence depend on given prompt and label.
 
-#### Main method:
+##### Main method and Simple Example:
 
-- 
+- `GPT2Generator.generate` using a GPT-2 model to generates a sequence of words of specified length given an input prompt.
 
+  ```python
+  import torch
+  from pprint import pprint
+  from transformers import GPT2LMHeadModel, GPT2Tokenizer
+  
+  from generator import GPT2Generator
+  
+  device = torch.device("cuda" if torch.cuda.is_available() else "cpu")   
+  
+  gpt2_generator = GPT2Generator(device)
+  
+  model = GPT2LMHeadModel.from_pretrained("/content/drive/My Drive/models/gpt2_imdb")
+  tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+  model.to(device)
+  
+  prompt = "[positive] <|sep|> The movie is really"
+  pprint(gpt2_generator.generate(tokenizer, model, prompt)[0])
+  
+  prompt = "[negative] <|sep|> The movie is really"
+  pprint(gpt2_generator.generate(tokenizer, model, prompt)[0])
+  ```
 
+- `GPT2PPOGenerator.generate` using GPT-2 PPO model to generates a sequence of words of specified length given an input prompt.
 
-#### Simple Example:
+  ```python
+  from trl.gpt2 import GPT2HeadWithValueModel
+  from trl.gpt2 import respond_to_batch
+  
+  from generator import GPT2PPOGenerator
+  
+  gpt2_ppo_generator = GPT2PPOGenerator(device)
+  
+  model = GPT2HeadWithValueModel.from_pretrained("/content/drive/My Drive/models/gpt2_ppo_imdb")
+  tokenizer = GPT2Tokenizer.from_pretrained("/content/drive/My Drive/models/gpt2_ppo_imdb")
+  model.to(device)
+  
+  prompt = "[positive] The movie is really"
+  pprint(gpt2_ppo_generator.generate(tokenizer, model, prompt))
+  
+  prompt = "[negative] The movie is really"
+  pprint(gpt2_ppo_generator.generate(tokenizer, model, prompt))
+  ```
+
+#### 
+
+### 4. Metrics
+
+`utils.data_pipeline` provide two methods to help users to evaluate the BERT model's accuracy and to evaluate the GPT-2 model's perplexity.
+
+##### Main method and Simple Example:
+
+- `compute_metrics` to compute precision, recall, and F1 score of BERT model.
+
+  ```python
+  from transformers import Trainer
+  from utils.metrics import compute_metrics
+  
+  		# Define trainer
+      trainer = Trainer(
+          model=model,
+          args=training_args,
+          compute_metrics=compute_metrics,
+          train_dataset=augmented,
+          eval_dataset=val_dataset,
+      )
+  
+      # Train the model
+      trainer.train()
+  
+      # Evaluate the model
+      train_score = trainer.evaluate(eval_dataset=train_dataset)
+      val_score = trainer.evaluate(eval_dataset=val_dataset)
+      test_score = trainer.evaluate(eval_dataset=test_dataset)
+  ```
+
+- `evaluate_gpt2` to computes the perplexity score of GPT-2.
+
+  ```python
+      from utils.metrics import evaluate_gpt2
+    
+    	# Evaluate the model
+      ppl = evaluate_gpt2("/content/test.txt", training_args, data_args, trainer, tokenizer)
+      print(ppl)
+  ```
 
 ## Run the examples
+
+We also provide three sample scripts to help user set up their training pipeline with our modules and Huggingface API.
 
  [Example for Bert classification](src/run_bert_text_classification.py) 
 
@@ -106,9 +185,6 @@ In this project, we build a text data augmentation pipline based on transformer 
 ## Members
 
 - Chris Liu
-
-- Jinfan Zhang
-
 - Yiyun Zheng
-
+- Jinfan Zhang
 - Tianyao Zheng

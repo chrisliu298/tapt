@@ -36,7 +36,7 @@ We completed all the user stories in our second version of sprint 2 plan, includ
 
 - Total number of user stories completed: 7
 
-- Total number of estimated ideal work hours: 
+- Total number of estimated ideal work hours: 61
 
 - Total number of days: 7
 

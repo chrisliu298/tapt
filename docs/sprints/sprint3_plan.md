@@ -4,11 +4,11 @@ Product name: TAPT
 
 Team name: TFRL
 
-Revision number: 2
+Revision number: 3
 
-Revision date: 
+Revision date: 7/19/20
 
-Sprint completion date:
+Sprint completion date: 7/20/20
 
 ## Goal
 
@@ -80,13 +80,13 @@ Yiyun Zheng: Developer, team member
 
 ## Initial Task Assignment
 
-Chris Liu: user story 1, task 1
+Chris Liu: user story 6, task 1
 
-Yiyun Zheng: user story 5, task 2
+Yiyun Zheng: user story 2, task 2
 
-Jinfan Zhang: user story 5, task 1
+Jinfan Zhang: user story 2, task 3
 
-Tianyao Zheng: user story 4, task 1
+Tianyao Zheng: user story 1, task 1
 
 ## Initial Scrum Board
 

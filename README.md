@@ -1,4 +1,4 @@
-# TAPT: Text Augmentation Using Pre-Trained Transformers
+# TAPT: Text Augmentation Using Pre-Trained Transformers With Reinforcement Learning
 
 ## Features
 

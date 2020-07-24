@@ -40,7 +40,7 @@ def main():
         use_all_test=False,
         test_count=10,
         test_size=5,
-        others=5,
+        non_test_size=5,
         seed=42,
     )
     # Load custom data

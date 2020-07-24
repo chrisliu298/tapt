@@ -15,7 +15,7 @@ def prepare_data(
     use_all_test=False,
     test_count=38000,
     test_size=25000,
-    others=13000,
+    non_test_size=13000,
     seed=42,
 ):
     """Prepares the BERT training, validaton, and test data.
@@ -42,7 +42,7 @@ def prepare_data(
     )
     if not use_all_test:
         _, test_indices = train_test_split(
-            range(test_count), test_size=test_size, train_size=others, random_state=seed
+            range(test_count), test_size=test_size, train_size=non_test_size, random_state=seed
         )
 
     # Split train and validation data

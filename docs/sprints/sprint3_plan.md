@@ -23,35 +23,63 @@ Sprint completion date:
 
 **User story 1:** As a researcher, I want to evaluate the augmented data by human examination so that I know the quality of the generated text.
 
-| Task Index | Task | Task Time |
-| :--------: | ---- | --------- |
-|     1      |      |           |
-|     2      |      |           |
-|     3      |      |           |
+| Task Index | Task                                                                                                | Task Time |
+| :--------: | --------------------------------------------------------------------------------------------------- | --------- |
+|     1      | Examine some portion of the augmented text data                                                     |           |
+|     2      | Retrieve the low quality augmented data (those with opposite labels) using the trained BERT model   |           |
+|     3      | Analyze what goes wrong with the augmented text with low quality                                    |           |
+| **Total**  |                                                                                                     |           |
 
 **User story 2:** As a researcher, I want to evaluate the augmented data by training a Transformer/RNN model so that I know the quality of the generated text.
+| Task Index | Task                                                                           | Task Time |
+| :--------: | ------------------------------------------------------------------------------ | --------- |
+|     1      | Preprocess the augmented data (load it for training)                           |           |
+|     2      | Train a BERT model as a classifier using both versions of the augmented text   |           |
+|     3      | Evaluate the two BERT models' performance                                      |           |
+| **Total**  |                                                                                |           |
 
 **User story 3:** As a researcher, I want high-level abstraction so that I can focus on the data augmentation instead of the model or code.
-
+| Task Index | Task                        | Task Time |
+| :--------: | --------------------------- | --------- |
+|     1      | Refract GPT-2 trainer       |           |
+|     2      | Refract BERT trainer        |           |
+|     3      | Refract PPO-GPT-2 trainer   |           |
+|     3      | Refract data loader         |           |
 **User story 4:** As a researcher, I want to see fully comment code so that I can refer to the source code when I need to.
-
+| Task Index | Task | Task Time |
+| :--------: | ---- | --------- |
+|     1      |  Add full comments to GPT-2 trainer    |           |
+|     2      |      |           |
+|     3      |      |           |
 **User sotry 5:** As a researcher, I want to see correctly formatted code so that it is easy to read.
-
+| Task Index | Task | Task Time |
+| :--------: | ---- | --------- |
+|     1      |   	Use Black to format all codes   |           |
+|     2      |      |           |
+|     3      |      |           |
 **User story 6:** As a researcher, I want a fully functional pipeline so that I don't need to assemble the parts manually.
-
+| Task Index | Task | Task Time |
+| :--------: | ---- | --------- |
+|     1      |   Write example code to demonstrate the full pipeline   |           |
+|     2      |      |           |
+|     3      |      |           |
 **User story 7:**  As a researcher, I want to generate extra training data so that I can examine its quality
-
+| Task Index | Task | Task Time |
+| :--------: | ---- | --------- |
+|     1      |  Generate 5000 training data using GPT-2     |           |
+|     2      |  Generate 5000 training data using GPT-2 (PPO trained)   |           |
+|     3      |      |           |
 
 
 ## Team Roles
 
 Chris Liu: Researcher, product owner
 
-Yiyun Zheng: Developer, scrum master
+Tianyao Zheng: Developer, scrum master
 
 Jinfan Zhang: Developer, team member
 
-Tianyao Zheng: Developer, team member
+Yiyun Zheng: Developer, team member
 
 ## Initial Task Assignment
 

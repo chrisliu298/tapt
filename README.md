@@ -101,10 +101,10 @@ In this project, we build a text data augmentation pipline based on transformer 
   tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
   model.to(device)
   
-  prompt = "[positive] <|sep|> The movie is really"
+  prompt = "<|startoftext|> [positive] <|sep|> The movie is really"
   pprint(gpt2_generator.generate(tokenizer, model, prompt)[0])
   
-  prompt = "[negative] <|sep|> The movie is really"
+  prompt = "<|startoftext|> [negative] <|sep|> The movie is really"
   pprint(gpt2_generator.generate(tokenizer, model, prompt)[0])
   ```
 

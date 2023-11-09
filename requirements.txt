@@ -6,4 +6,4 @@ nlp
 torch
 pandas
 dict2obj
-pyarrow==0.16.0
+pyarrow==14.0.1
